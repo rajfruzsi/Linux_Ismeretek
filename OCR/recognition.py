@@ -1,13 +1,16 @@
-  
 import cv2
 import numpy as np
 import pytesseract
+import tkinter as tk
 from PIL import Image
 from pytesseract import image_to_string
 from pytesseract import Output
 
 srcpath=""
-imgname="test.png"
+imgname="test.jpg"
+
+window=tk.Tk()
+
 
 def preproc(imgpath):
     img=cv2.imread(imgpath)
@@ -30,13 +33,21 @@ def boxes(imgpath):
     cv2.waitKey(0)
     cv2.destroyAllWindows()
     
-def getstring():
+def getText():
     config= ("-psm 3 --oem 1")
     result=pytesseract.image_to_string(Image.open(srcpath + "thresh.png"),config=config)
     file=open("result", "w")
     file.write(result)
     return result
 
-preprocimg=preproc(srcpath+imgname)
-boxes(preprocimg)
-print(getstring())
+def getImg():
+    imageName=imgName.get()
+    processedImg=preproc(srcpath+imageName)
+    boxes(processedImage)
+    print(getText())
+
+tk.Label(window,text="Kép neve kiterjesztéssel").grid(row=0)
+imgName=tk.Entry(window)
+imgName.grid(row=0,column=1)
+window.title("Szövegfelismerő program")
+tk.Button(window, text="Felismerés!", command=getImg).grid(row=1, column=0, sticky=tk.W,pady=4)
