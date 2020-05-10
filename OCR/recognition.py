@@ -46,10 +46,8 @@ def uploadImage():
     uploadedImgName=filedialog.askopenfile()
     absPath=os.path.abspath(uploadedImgName.name)
     imageName=absPath
-    print(absPath)
     processedImg=preproc(imageName)
     boxes(processedImg)
-    print("fgvelott")
     text=getText()
     print(text)
     
@@ -61,7 +59,6 @@ def getImg():
     boxes(processedImg)
     text=getText()
     print(text)
-    print("juhu")
 
 
 window=tk.Tk()
