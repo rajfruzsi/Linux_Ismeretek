@@ -15,7 +15,8 @@ ln -s ~/local/bin/python3.7 ~/local/bin/python
 cd ..
 
 apt-get update
+apt-get install python3-opencv
 apt-get install python3-pip
 pip3 install numpy
 pip3 install pytesseract
-pip3 install opencv-python
+
