@@ -17,6 +17,7 @@ cd ..
 
 apt-get update
 apt-get install python3-opencv
+apt-get install python3-tk
 apt-get install python3-pip
 pip3 install numpy
 pip3 install pytesseract
