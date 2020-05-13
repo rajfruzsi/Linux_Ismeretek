@@ -70,6 +70,7 @@ def uploadImage():
     
 
 def getImg():
+    imageName=""
     if imgName.get()!="":
         imageName=imgName.get()
     processedImg=preProcess(imageName)
