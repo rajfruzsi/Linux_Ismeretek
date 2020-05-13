@@ -17,7 +17,7 @@ srcpath=""
 def doesFileExist(filename):
     return os.path.isfile(filename)
 
-def preproc(imgpath):
+def preProcess(imgpath):
     img=cv2.imread(imgpath)
     doesImageExist=doesFileExist(imgpath)
     if doesImageExist==True:
@@ -31,7 +31,7 @@ def preproc(imgpath):
         messageBoxNoImage()
     return img
 
-def boxes(imgpath):
+def drawBoxes(imgpath):
     d = pytesseract.image_to_data(imgpath, output_type=Output.DICT)
     n_boxes = len(d['level'])
     for i in range(n_boxes):
@@ -59,8 +59,8 @@ def uploadImage():
     uploadedImgName=filedialog.askopenfile()
     absPath=os.path.abspath(uploadedImgName.name)
     imageName=absPath
-    processedImg=preproc(imageName)
-    boxes(processedImg)
+    processedImg=preProcess(imageName)
+    drawBoxes(processedImg)
     text=getText()
     if text!=None:
         messageBoxSuccess()
@@ -72,9 +72,9 @@ def uploadImage():
 def getImg():
     if imgName.get()!="":
         imageName=imgName.get()
-    processedImg=preproc(imageName)
+    processedImg=preProcess(imageName)
     if processedImg is not None:
-        boxes(processedImg)
+        drawBoxes(processedImg)
         text=getText()
         if text!=None:
             messageBoxSuccess()
